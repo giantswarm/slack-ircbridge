@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: slack-ircbridge
+  name: slack-ircbridge
+  labels:
+    app: slack-ircbridge
+    component: slack-ircbridge
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: slack-ircbridge
+      labels:
+        app: slack-ircbridge
+        component: slack-ircbridge
+    spec:
+      containers:
+        - image: giantswarm/slack-ircbridge:latest
+          name: slack-ircbridge
+          env:
+          - name: NICKNAME
+            value: slackbridge
+          - name: SERVER
+            value: irc.freenode.org
+          - name: SLACK_CHANNEL
+            value: freenode-giantswarm
+          - name: IRC_CHANNEL
+            value: giantswarm
+          - name: TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: slack
+                key: token
