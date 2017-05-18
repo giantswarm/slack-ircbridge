@@ -16,7 +16,7 @@ spec:
         component: slack-ircbridge
     spec:
       containers:
-        - image: registry.giantswarm.io/giantswarm/slack-ircbridge:%%DOCKER_TAG%%
+        - image: quay.io/giantswarm/slack-ircbridge:{{ .BuildInfo.SHA }}
           name: slack-ircbridge
           env:
           - name: NICKNAME
@@ -32,5 +32,3 @@ spec:
               secretKeyRef:
                 name: slack
                 key: token
-      imagePullSecrets:
-        - name: registry-pull-secret
