@@ -1,4 +1,4 @@
-FROM node:6.0.0
+FROM node:6-alpine
 MAINTAINER Joseph Salisbury <joseph@giantswarm.io>
 
 RUN npm install -g slack-irc@3.8.0
