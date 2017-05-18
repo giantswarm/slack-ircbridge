@@ -7,7 +7,7 @@ metadata:
     app: slack-ircbridge
     component: slack-ircbridge
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       name: slack-ircbridge
@@ -15,7 +15,6 @@ spec:
         app: slack-ircbridge
         component: slack-ircbridge
     spec:
-      replicas: 1
       containers:
         - image: quay.io/giantswarm/slack-ircbridge:{{ .BuildInfo.SHA }}
           name: slack-ircbridge
